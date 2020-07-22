@@ -1,0 +1,17 @@
+{
+  "name": "awesome-hiring",
+  "version": "1.0.0",
+  "description": "A simple hiring app for Comunev's task.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roshan Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.4",
+    "express-validator": "^6.6.0",
+    "mongodb": "^3.5.9"
+  }
+}
