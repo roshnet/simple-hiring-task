@@ -2,6 +2,7 @@ const express = require('express')
 const uploader = require('express-fileupload')
 const { check, validationResult } = require('express-validator');
 const MongoClient = require('mongodb').MongoClient
+const crypto = require('crypto')
 const { devURI, PORT, dbName } = require('./config')
 
 const app = express()
@@ -50,6 +51,7 @@ app.post('/hire',[
       // Add a unique slug for distinct files
       const uidSlug = crypto.randomBytes(3).toString("hex");
       let newFilename = `${uidSlug}--${resume.name}`
+      req.body.resumeFile = newFilename
 
       // Save file with a unique name
       resume.mv(`./uploads/${newFilename}`)
