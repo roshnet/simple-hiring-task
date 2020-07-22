@@ -11,7 +11,9 @@ app.use(uploader({
 }))
 
 let db
-MongoClient.connect(devURI, (err, client) => {
+MongoClient.connect(devURI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err, client) => {
   if (err) {
     return console.error(`Cannot start the server: ${err}`)
   }
