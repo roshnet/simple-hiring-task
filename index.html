@@ -1,29 +1,70 @@
+<!-- 
+  Made for Comunev task by Roshan Sharma.
+
+  NOTE:
+    This file is deployed on Surge.
+    The source code of this file can be found in the repository at -
+    https://github.com/roshnet/simple-hiring-task
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <title>Hiring Form</title>
 </head>
 <body>
-  <div>
-    <form
-      action="http://localhost:3000/hire"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <input type="text" name="name" placeholder="Name" />
-      <input type="text" name="email" placeholder="Email Address" />
-      <input type="file" name="resumeFile" placeholder="Upload resume" />
-      <input type="text" name="resumeLink" placeholder="Link to resume" />
-      <input type="text" name="position" placeholder="Position to apply" />
-      <input
-        type="text"
-        name="qualification"
-        placeholder="Highest qualification"
-      />
-      <input type="submit" value="Apply">
-    </form>
+  <div class="container">
+    <div class="row center orange white-text" style="padding: 0.5em; margin: 0.3em">
+      <h2>Comunev Hiring Task</h2>
+      <p class="right-align">- Roshan Sharma</p>
+    </div>
+    <div class="row">
+      <form
+        action="https://comunev-task-roshan.herokuapp.com/hire"
+        method="POST"
+        class="col s12"
+        enctype="multipart/form-data"
+      >
+        <div class="input-field col s12 l6">
+          <input id="name" name="name" type="text" class="validate" required>
+          <label for="name">Full Name</label>
+        </div>
+        <div class="input-field col s12 l6">
+          <input id="email" name="email" type="email" class="validate" required>
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s12 l6">
+          <input id="position" name="position" type="text" class="validate" required>
+          <label for="position">Position</label>
+        </div>
+        <div class="file-field input-field col s12 l6">
+          <div class="btn indigo">
+            <span>Upload Resume</span>
+            <input type="file" name="resumeFile">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <input id="resume-link" name="resumeLink" type="url" class="validate">
+          <label for="resume-link">Link to resume (optional)</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <input id="qualification" name="qualification" type="text" class="validate" required>
+          <label for="qualification">Highest Qualification</label>
+        </div>
+        <div class="col s12 center" style="margin-top: 2.5em;">
+          <button class="btn amber darken-3" name="submit" type="submit">Apply</button>
+        </div>
+      </form>
+    </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
