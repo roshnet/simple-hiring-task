@@ -42,7 +42,20 @@ app.post('/hire',[
   }
 
   try {
-    db.collection('hiring').save(req.body, (err, result) => {
+    // Upload resume file if there's one
+    if (req.files) {
+      console.log('FILE FOUND!')
+      let resume = req.files.resumeFile
+
+      // Add a unique slug for distinct files
+      const uidSlug = crypto.randomBytes(3).toString("hex");
+      let newFilename = `${uidSlug}--${resume.name}`
+
+      // Save file with a unique name
+      resume.mv(`./uploads/${newFilename}`)
+    }
+
+    db.collection('hiring').insertOne(req.body, (err, result) => {
       if (err) {
         throw err
       }
