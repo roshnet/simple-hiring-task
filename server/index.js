@@ -3,7 +3,7 @@ const uploader = require('express-fileupload')
 const { check, validationResult } = require('express-validator');
 const MongoClient = require('mongodb').MongoClient
 const crypto = require('crypto')
-const { devURI, PORT, dbName } = require('./config')
+const { devURI, prodURI, PORT, dbName } = require('./config')
 
 const app = express()
 app.use(express.urlencoded({extended: true}))
@@ -12,7 +12,10 @@ app.use(uploader({
 }))
 
 let db
-MongoClient.connect(devURI,
+// Set MongoDB URI based on environment
+let uri = process.env.PROD ? prodURI : devURI
+
+MongoClient.connect(uri,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, client) => {
   if (err) {
