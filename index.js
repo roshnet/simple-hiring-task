@@ -46,6 +46,7 @@ app.post('/hire',[
         return
       }
       console.log('Success! Data saved for candidate.')
+      res.send('Your application was submitted!')
     })
   }
   catch (err) {
