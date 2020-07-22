@@ -43,7 +43,6 @@ app.post('/hire',[
     db.collection('hiring').save(req.body, (err, result) => {
       if (err) {
         throw err
-        return
       }
       console.log('Success! Data saved for candidate.')
       res.send('Your application was submitted!')
