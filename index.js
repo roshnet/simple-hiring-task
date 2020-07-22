@@ -2,7 +2,7 @@ const express = require('express')
 const uploader = require('express-fileupload')
 const { check, validationResult } = require('express-validator');
 const MongoClient = require('mongodb').MongoClient
-const { devURI, PORT } = require('./config')
+const { devURI, PORT, dbName } = require('./config')
 
 const app = express()
 app.use(express.urlencoded({extended: true}))
@@ -15,7 +15,7 @@ MongoClient.connect(devURI, (err, client) => {
   if (err) {
     return console.error(`Cannot start the server: ${err}`)
   }
-  db = client.db('employees')
+  db = client.db(dbName)
   app.listen(PORT,  () => {
     console.log(`API running on ${PORT}...`)
   })
