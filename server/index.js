@@ -48,7 +48,6 @@ app.post('/hire',[
   try {
     // Upload resume file if there's one
     if (req.files) {
-      console.log('FILE FOUND!')
       let resume = req.files.resumeFile
 
       // Add a unique slug for distinct files
@@ -64,7 +63,6 @@ app.post('/hire',[
       if (err) {
         throw err
       }
-      console.log('Success! Data saved for candidate.')
       res.send('Your application was submitted!')
     })
   }
